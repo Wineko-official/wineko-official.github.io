@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    
+    <!-- Базове SEO -->
+    <title>Wineko | Вірші та балади Етернхольту</title>
+    <meta name="description" content="Поезія та балади у всесвіті Lost in Time. Вірші про ліс, грибожабів, Аямі, Акане, Тропіколя.">
+    <meta name="keywords" content="вірші, балади, поезія, Lost in Time, Етернхольт, Wineko">
+    <link rel="canonical" href="https://wineko-official.github.io/poems.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Wineko Lost In Time.png">
+
+    <!-- Open Graph / Telegram / Discord / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wineko-official.github.io/poems.html">
+    <meta property="og:title" content="Wineko | Вірші та балади Етернхольту">
+    <meta property="og:description" content="Поезія та балади у всесвіті Lost in Time. Вірші про ліс, грибожабів, Аямі, Акане, Тропіколя.">
+    <meta property="og:image" content="https://wineko-official.github.io/Wineko%20Lost%20In%20Time.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wineko | Вірші та балади Етернхольту">
+    <meta name="twitter:description" content="Поезія та балади у всесвіті Lost in Time.">
+    <meta name="twitter:image" content="https://wineko-official.github.io/Wineko%20Lost%20In%20Time.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ========== ФОН: КАРТИНКА bg_poetry.png ========== */
+        body {
+            background: url('bg_poetry.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Світлячки залишаються (поверх фону) */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: blur(0.8px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ========== КНИГА ФІКСОВАНОГО РОЗМІРУ ========== */
+        .book-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            pointer-events: auto;
+        }
+
+        .grimoire {
+            display: flex;
+            background: #2f1e18;
+            border-radius: 24px 12px 12px 24px;
+            padding: 18px 18px 18px 28px;
+            box-shadow: 0 40px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,245,210,0.1);
+            position: relative;
+            min-height: 600px;
+            height: 80vh;
+            max-height: 700px;
+        }
+
+        /* Корінець */
+        .grimoire::before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 24px;
+            bottom: 24px;
+            width: 34px;
+            background: linear-gradient(120deg, #1c120e, #3b2a20 40%, #1c120e);
+            border-radius: 20px 0 0 20px;
+            box-shadow: inset -2px 0 8px rgba(0,0,0,0.6), 4px 0 12px rgba(0,0,0,0.3);
+            z-index: 3;
+        }
+        .grimoire::after {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 34px;
+            height: 75%;
+            background: repeating-linear-gradient(90deg, rgba(90,65,45,0.5) 0px, rgba(90,65,45,0.5) 5px, rgba(30,18,10,0.7) 5px, rgba(30,18,10,0.7) 10px);
+            border-radius: 20px 0 0 20px;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        /* ЛІВА СТОРІНКА (МЕНЮ) */
+        .page-left {
+            width: 35%;
+            background: #f3ecdb;
+            background-image: radial-gradient(circle at 20% 30%, rgba(80,55,35,0.08) 1px, transparent 1px);
+            background-size: 22px 22px;
+            border-radius: 16px 0 0 16px;
+            padding: 30px 20px;
+            overflow-y: auto;
+            box-shadow: inset -2px 0 25px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,250,210,0.6);
+            position: relative;
+        }
+
+        /* ПРАВА СТОРІНКА (ТЕКСТ) – З ПОВНОЦІННОЮ АНІМАЦІЄЮ ПЕРЕГОРТАННЯ */
+        .page-right {
+            width: 65%;
+            background: #faf3e5;
+            background-image: radial-gradient(circle at 90% 20%, rgba(90,65,40,0.07) 1px, transparent 1px);
+            background-size: 25px 25px;
+            border-radius: 0 16px 16px 0;
+            padding: 45px 45px;
+            overflow-y: auto;
+            box-shadow: inset 2px 0 25px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255,250,210,0.5);
+            position: relative;
+            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            will-change: transform;
+        }
+        /* Клас для анімації перегортання (повний розворот) */
+        .page-right.flip {
+            transform: rotateY(-180deg);
+        }
+
+        .page-left::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 0% 50%, rgba(100,60,30,0.1), transparent 70%);
+            pointer-events: none;
+        }
+        .page-right::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.12), transparent 40px);
+            pointer-events: none;
+        }
+
+        .toc-title {
+            font-size: 1.8rem;
+            text-align: center;
+            font-weight: bold;
+            color: #4a2e1e;
+            border-bottom: 2px solid #b88a5a;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .poem-list {
+            list-style: none;
+        }
+        .poem-list li {
+            padding: 12px 15px;
+            margin: 8px 0;
+            font-size: 1.1rem;
+            color: #4a3420;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: 0.2s;
+            border-radius: 0 12px 12px 0;
+        }
+        .poem-list li:hover {
+            background: rgba(130,85,45,0.2);
+            border-left-color: #b87c4a;
+            padding-left: 22px;
+        }
+        .poem-list li.active {
+            background: rgba(120,75,40,0.25);
+            border-left-color: #a55a2a;
+            color: #3b1f0f;
+            font-weight: bold;
+        }
+
+        .poem-title {
+            font-size: 2rem;
+            color: #4a2a1a;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+        .poem-content {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #2a1a0c;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            max-height: calc(100% - 80px);
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            border: 1px solid #c8a87a;
+            color: #ffebc2;
+            padding: 6px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            z-index: 20;
+            font-family: monospace;
+            transition: 0.2s;
+        }
+        .back-btn:hover {
+            background: #4a3a2a;
+            border-color: #ffd8a0;
+        }
+
+        @media (max-width: 800px) {
+            .grimoire {
+                flex-direction: column;
+                min-height: auto;
+                height: auto;
+                padding: 15px;
+            }
+            .page-left, .page-right {
+                width: 100%;
+                border-radius: 16px;
+                margin-bottom: 15px;
+                padding: 20px;
+            }
+            .grimoire::before, .grimoire::after {
+                display: none;
+            }
+            .poem-title {
+                font-size: 1.5rem;
+            }
+            .poem-content {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<canvas id="fireflyCanvas"></canvas>
+
+<div class="book-wrapper">
+    <div class="grimoire">
+        <div class="page-left">
+            <div class="toc-title">📖 Зміст</div>
+            <ul class="poem-list" id="poemList"></ul>
+        </div>
+        <div class="page-right" id="poemPage">
+            <div class="poem-title" id="poemTitle"></div>
+            <div class="poem-content" id="poemContent"></div>
+        </div>
+    </div>
+</div>
+<a href="index.html" class="back-btn">← На головну</a>
+
+<script>
+    // ========== ВАШІ ВІРШІ ==========
+    const poems = [
+        {
+            title: "Чому у лісі дуже темно",
+            content: `Чому у лісі дуже темно, чому немає грибожаб?
+Куди поділись тропіколі, куди пропав магічний шлях?
+Куди поділися дерева, які росли аж до небес?
+Що сталося з тобою, моя земле?
+Хто захотів скривдити тебе?
+
+Це культ розкинув свої лапи,
+Щоб загарбати всіх нас.
+Створіння їхні, мутатонти,
+Не мають жалю та поваги до природи.
+
+Настав той час, коли потрібні ми своїй землі,
+І наша битва скаже все:
+Хто з совістю і з любов'ю до природи,
+А хто отримає від нас за все!`
+        },
+        {
+            title: "Пустеля не тільки назовні",
+            content: `Чарує красою і спритністю тіла,
+З дитинства поживши у тяжкій журбі,
+Знедолена дівчина з лезом в долонях...
+Закортіло їй дуже пізнати цей світ.
+
+Знайшовши собі спільноту по духу —
+Для бідних спасіння, для знаті повчання, —
+Не може так бути, поки ми тут є,
+Що бідні без хліба, а в магнатів є все!
+
+Минали роки та йшли місяці,
+Ми, як зазвичай, крали в бридоти,
+Але не було вже такого запалу —
+Все більше багатство лишали собі.
+«Нечесно, неправда, не може так бути!» —
+Кричала собі у своїй голові.
+
+Та сама дівчина, що так закортіла
+Пізнати цей захопливий світ,
+Зібравшись з думками, сказавши їм все:
+Що більше не робимо ми, як бажали,
+Що більше немає честі в очах,
+Є тільки лиш бруд і тягар на душі!
+
+Отримавши у відповідь лиш тільки сміх
+Від друзів, з якими була всі роки,
+Сказавши від себе і знявши клеймо:
+Що побачимось ми, і настане той час,
+Коли мій кинджал зустрінеться з вашим!
+
+Покинувши все і залишивши клан,
+Почала поринати в нове життя.
+Там світ Етернхольт, там замок Тенсей,
+Там нові можливості наших ідей,
+Там є тропіколі, там є грибожаб,
+Там місце є для гідних людей.`
+        }
+    ];
+
+    const poemListEl = document.getElementById('poemList');
+    const poemPage = document.getElementById('poemPage');
+    const poemTitleEl = document.getElementById('poemTitle');
+    const poemContentEl = document.getElementById('poemContent');
+    let isAnimating = false;
+    let currentIndex = 0;
+
+    function changePoem(index) {
+        if (isAnimating || index === currentIndex) return;
+        const poem = poems[index];
+        // Анімація перегортання сторінки (повний розворот)
+        poemPage.classList.add('flip');
+        isAnimating = true;
+        setTimeout(() => {
+            // Змінюємо текст під час "напівперевороту"
+            poemTitleEl.innerText = poem.title;
+            poemContentEl.innerText = poem.content;
+            poemPage.classList.remove('flip');
+            setTimeout(() => { isAnimating = false; }, 100);
+        }, 250); // Час має відповідати transition (0.5s), але змінюємо трохи раніше
+        // Оновити активний пункт у списку
+        document.querySelectorAll('.poem-list li').forEach((li, i) => {
+            if (i === index) li.classList.add('active');
+            else li.classList.remove('active');
+        });
+        currentIndex = index;
+    }
+
+    function buildList() {
+        poemListEl.innerHTML = '';
+        poems.forEach((poem, idx) => {
+            const li = document.createElement('li');
+            li.textContent = poem.title;
+            li.addEventListener('click', () => changePoem(idx));
+            poemListEl.appendChild(li);
+        });
+        if (poems.length) {
+            document.querySelector('.poem-list li').classList.add('active');
+            poemTitleEl.innerText = poems[0].title;
+            poemContentEl.innerText = poems[0].content;
+        }
+    }
+    buildList();
+
+    // ========== СВІТЛЯЧКИ ==========
+    const canvas = document.getElementById('fireflyCanvas');
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+
+    function resizeCanvas() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Firefly {
+        constructor() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.s = Math.random() * 2 + 1;
+            this.ang = Math.random() * 2 * Math.PI;
+            this.v = 0.15 + Math.random() * 0.3;
+            this.angleChange = (Math.random() - 0.5) * 0.04;
+        }
+        move() {
+            this.x += this.v * Math.cos(this.ang);
+            this.y += this.v * Math.sin(this.ang);
+            this.ang += this.angleChange;
+            if (this.x < -50) this.x = w + 50;
+            if (this.x > w + 50) this.x = -50;
+            if (this.y < -50) this.y = h + 50;
+            if (this.y > h + 50) this.y = -50;
+        }
+        show() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.s, 0, 2 * Math.PI);
+            ctx.fillStyle = "#ffdfa5";
+            ctx.shadowBlur = 12;
+            ctx.shadowColor = "#ffcc66";
+            ctx.fill();
+        }
+    }
+
+    let fireflies = [];
+    const MAX_FIREFLIES = 100;
+
+    function draw() {
+        while (fireflies.length < MAX_FIREFLIES) {
+            fireflies.push(new Firefly());
+        }
+        for (let i = 0; i < fireflies.length; i++) {
+            fireflies[i].move();
+            fireflies[i].show();
+        }
+    }
+
+    function animate() {
+        if (!ctx) return;
+        ctx.clearRect(0, 0, w, h);
+        draw();
+        requestAnimationFrame(animate);
+    }
+    animate();
+</script>
+</body>
+</html>

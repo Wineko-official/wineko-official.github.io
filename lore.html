@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    
+    <!-- Базове SEO -->
+    <title>Wineko | Енциклопедія світу Lost in Time – Лор, локації, бестіарій</title>
+    <meta name="description" content="Енциклопедія світу Lost in Time: локації Етернхольт, бестіарій істот, магічні ордени, історія фентезі-всесвіту.">
+    <meta name="keywords" content="Етернхольт, бестіарій, Грибожаб, Тропіколь, Орцинтавр, Мутатонт, Громахр, Орден Темного Ока, Wineko, лор">
+    <link rel="canonical" href="https://wineko-official.github.io/lore.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Wineko Lost In Time.png">
+
+    <!-- Open Graph / Telegram / Discord / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wineko-official.github.io/lore.html">
+    <meta property="og:title" content="Wineko | Енциклопедія світу Lost in Time – Лор, локації, бестіарій">
+    <meta property="og:description" content="Енциклопедія світу Lost in Time: детальний опис локацій Етернхольту, магічних законів, орденів та унікального бестіарію.">
+    <meta property="og:image" content="https://wineko-official.github.io/Wineko%20Lost%20In%20Time.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wineko | Енциклопедія світу Lost in Time – Лор, локації, бестіарій">
+    <meta name="twitter:description" content="Енциклопедія світу Lost in Time: детальний опис локацій Етернхольту, магічних законів, орденів та унікального бестіарію.">
+    <meta name="twitter:image" content="https://wineko-official.github.io/Wineko%20Lost%20In%20Time.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+            overflow-x: hidden;
+        }
+
+        .site-container {
+            position: relative;
+            width: 100%;
+            max-width: 2000px;
+            display: block;
+            --font-scale: 1vw;
+        }
+
+        .bg-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            pointer-events: none;
+        }
+
+        .window-container {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #ccc;
+        }
+
+        .window-container h2 {
+            color: #fff;
+            font-size: calc(var(--font-scale) * 1.25);
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Стиль для підзаголовків або альтернативних блоків */
+        .window-container .sub-title {
+            font-size: calc(var(--font-scale) * 1.05);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .scroll-content {
+            width: 100%;
+            flex: 1;
+            overflow-y: auto;
+            padding: 2px 6px;
+        }
+
+        .scroll-content p {
+            font-size: calc(var(--font-scale) * 0.75);
+            line-height: 1.4;
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+
+        .scroll-content::-webkit-scrollbar {
+            width: 3px;
+        }
+        .scroll-content::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 2px;
+        }
+
+        /* Кнопка енциклопедії */
+        .encyclopedia-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #00d2ff;
+            color: #00d2ff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: calc(var(--font-scale) * 0.7);
+            transition: all 0.2s ease;
+            font-family: 'Georgia', serif;
+        }
+        .encyclopedia-btn:hover {
+            background: rgba(0,210,255,0.2);
+            text-shadow: 0 0 5px #00d2ff;
+            transform: scale(1.02);
+        }
+
+        /* Координати як у support-box та social-box на головній */
+        .world-left {
+            top: 60.5%;
+            left: 65%;
+            width: 12.8%;
+            height: 29%;
+        }
+        .world-right {
+            top: 60.5%;
+            left: 80%;
+            width: 12.8%;
+            height: 29%;
+        }
+
+        /* Навігація */
+        .nav-menu {
+            position: absolute;
+            top: 33%;
+            left: 18.8%;
+            width: 15%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 14px;
+            z-index: 10;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: calc(var(--font-scale) * 0.85);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Georgia', serif;
+            white-space: nowrap;
+            text-align: right;
+            line-height: 1.4;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 8px rgba(255,255,255,0.3);
+        }
+
+        .nav-menu a:hover {
+            color: #00d2ff;
+            text-shadow: 0 0 12px #00d2ff;
+            transform: translateX(-5px);
+        }
+
+        /* Аудіоплеєр */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(15,15,15,0.9);
+            border: 1px solid #333;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .audio-player button {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #444;
+            color: #fff;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: 'Georgia', serif;
+            transition: all 0.2s ease;
+        }
+
+        .audio-player button:hover {
+            border-color: #00d2ff;
+            text-shadow: 0 0 8px #00d2ff;
+            background: rgba(0,210,255,0.05);
+        }
+
+        #trackName {
+            font-size: 12px;
+            color: #888;
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+        }
+
+        #volumeSlider {
+            width: 70px;
+            accent-color: #00d2ff;
+            cursor: pointer;
+        }
+
+        /* Мобільна версія */
+        @media (max-width: 768px) {
+            body {
+                align-items: flex-start;
+                padding: 100px 15px 20px 15px; /* Збільшено для запобігання перекриттю плеєром */
+                background-image: url('m.bg.png');
+                background-size: cover;
+                background-position: center top;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+
+            .site-container {
+                --font-scale: 4.5vw;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .bg-image {
+                display: none;
+            }
+
+            .nav-menu {
+                position: static;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 15px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #222;
+                padding-bottom: 15px;
+            }
+
+            .nav-menu a {
+                font-size: 14px;
+                text-align: center;
+                white-space: normal;
+            }
+
+            .window-container {
+                position: static;
+                width: 100% !important;
+                height: auto !important;
+                background: rgba(15,15,15,0.95);
+                border: 1px solid #222;
+                border-radius: 8px;
+                padding: 15px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+                margin-bottom: 20px;
+            }
+
+            .window-container h2 {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .window-container .sub-title {
+                font-size: 16px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .scroll-content {
+                overflow-y: visible;
+                padding: 0;
+            }
+
+            .scroll-content p {
+                font-size: 14px;
+                text-align: left;
+                margin-bottom: 12px;
+            }
+
+            .encyclopedia-btn {
+                font-size: 12px;
+            }
+
+            .audio-player {
+                bottom: auto;
+                top: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100% - 30px);
+                justify-content: space-between;
+                background: rgba(15,15,15,0.95);
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            #trackName {
+                max-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-container">
+        <img src="bg.png" class="bg-image" alt="Eternhold Interface">
+
+        <nav class="nav-menu">
+            <a href="index.html">Головна</a>
+            <a href="lore.html">Світ та Лор</a>
+            <a href="books.html">Книги та <br>Проєкти</a>
+            <a href="poems.html">Вірші та <br>Балади</a>
+        </nav>
+
+        <!-- Ліве вікно – Lost in Time -->
+        <div class="window-container world-left">
+            <h2>🌌 Lost in Time</h2>
+            <div class="scroll-content">
+                <p><strong>Етернхольт (Eternhold)</strong> — древній всесвіт, де час тече за своїми містичними законами, а магія переплітається з долями смертних та безсмертних істот.</p>
+                <p>Світ розділений на унікальні зони, кожна з яких приховує таємниці, небезпеки та прадавні артефакти, що здатні змінювати хід історії.</p>
+                <p>У розділі енциклопедії ви знайдете детальний опис локацій, магічних законів, орденів та бестіарій.</p>
+            </div>
+            <a href="lore-lostintime.html" class="encyclopedia-btn">📖 Перейти до енциклопедії</a>
+        </div>
+
+        <!-- Праве вікно – Новий світ / анонси -->
+        <div class="window-container world-right">
+            <h2 class="sub-title">🔮 Новий світ</h2>
+            <div class="scroll-content">
+                <p>Тут з’явиться енциклопедія другого всесвіту. Скоро...</p>
+                <p>✨ Слідкуйте за анонсами ✨</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- АУДІОПЛЕЄР -->
+    <div class="audio-player">
+        <button id="musicBtn" onclick="toggleMusic()">🎵 Увімкнути радіо</button>
+        <span id="trackName">📻 Радіо Етернхольт</span>
+        <div class="volume-container">
+            <span>🔈</span>
+            <input type="range" id="volumeSlider" min="0" max="100" value="30" oninput="changeVolume(this.value)">
+            <span>🔊</span>
+        </div>
+    </div>
+    <div id="youtubePlayer" style="display: none;"></div>
+
+    <script>
+        const videoIDs = ["3y_6zqa5jn8","moKNkLdjKws","T5GdIQHGhv0","K_pY6pdh_2M","fL1327aZdfc","vrZLMxPcHYM","d2FW1DcMdiw","liIizxQ6z4A","Ml9rMQdqDQU","FZCCWVIcFYo","_9vRwdG7IvU","ezYuc1jnP9I"];
+        const trackNames = ["Wi-Range - Lyric Story","Wi-Range - Intro","Wi-Range - Skeleton Knight","Wi-Range - Future","Wi-Range - Miami beach","Wi-Range - Night Ranger","Wi-Range & DENIS-G - Night City of Miami","Wi-Range & DENIS-G - NIGHT ROAD (ORIGINAL MIX)","Wi_Range feat Denis-g - back to 80's","Wi_Range - Revenge","Wi_range - Iron age","Wi-Range - Lost In Time"];
+
+        let player = null, isPlaying = false, currentTrack = -1, currentTime = 0, isPlayerReady = false;
+
+        function saveState() { if (currentTrack !== -1 && isPlayerReady) { localStorage.setItem('radio_track', currentTrack); localStorage.setItem('radio_time', currentTime); } }
+        function loadSavedState() {
+            const savedTrack = localStorage.getItem('radio_track');
+            const savedTime = parseFloat(localStorage.getItem('radio_time'));
+            if (savedTrack !== null && savedTrack >= 0 && isPlayerReady) {
+                currentTrack = parseInt(savedTrack);
+                currentTime = isNaN(savedTime) ? 0 : savedTime;
+                isPlaying = false;
+                document.getElementById("trackName").innerText = "📻 " + trackNames[currentTrack];
+                player.loadVideoById({ videoId: videoIDs[currentTrack], startSeconds: 0 });
+                let interval = setInterval(() => {
+                    const dur = player.getDuration();
+                    if (dur && dur > 0 && currentTime < dur) {
+                        clearInterval(interval);
+                        player.seekTo(currentTime, true);
+                        player.pauseVideo();
+                    }
+                }, 100);
+            } else { currentTrack = -1; }
+        }
+        function onPlayerReady() {
+            isPlayerReady = true;
+            loadSavedState();
+            setInterval(() => {
+                if (player && player.getCurrentTime && isPlayerReady && currentTrack !== -1) {
+                    const t = player.getCurrentTime();
+                    if (t && !isNaN(t)) { currentTime = t; saveState(); }
+                }
+            }, 2000);
+        }
+        function onPlayerStateChange(event) {
+            const btn = document.getElementById("musicBtn");
+            if (event.data === YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                if (btn) { btn.innerText = "⏸ Пауза"; btn.style.borderColor = "#ff6400"; }
+                saveState();
+            } else if (event.data === YT.PlayerState.PAUSED) {
+                isPlaying = false;
+                if (btn) { btn.innerText = "🎵 Увімкнути радіо"; btn.style.borderColor = "#444"; }
+                saveState();
+            } else if (event.data === YT.PlayerState.ENDED && currentTrack !== -1) {
+                let newTrack = currentTrack;
+                while (newTrack === currentTrack && videoIDs.length > 1) newTrack = Math.floor(Math.random() * videoIDs.length);
+                currentTrack = newTrack;
+                currentTime = 0;
+                document.getElementById("trackName").innerText = "📻 " + trackNames[currentTrack];
+                player.loadVideoById({ videoId: videoIDs[currentTrack], startSeconds: 0 });
+                if (isPlaying) player.playVideo();
+                saveState();
+            }
+        }
+        function toggleMusic() {
+            if (!player || !isPlayerReady) return;
+            if (!isPlaying) {
+                if (currentTrack === -1) {
+                    currentTrack = Math.floor(Math.random() * videoIDs.length);
+                    currentTime = 0;
+                    document.getElementById("trackName").innerText = "📻 " + trackNames[currentTrack];
+                    player.loadVideoById({ videoId: videoIDs[currentTrack], startSeconds: 0 });
+                    let interval = setInterval(() => {
+                        const dur = player.getDuration();
+                        if (dur && dur > 0) {
+                            clearInterval(interval);
+                            player.seekTo(Math.random() * (dur * 0.7), true);
+                            player.playVideo();
+                        }
+                    }, 100);
+                    isPlaying = true;
+                } else { player.playVideo(); }
+            } else { player.pauseVideo(); }
+        }
+        function changeVolume(val) { if (player && player.setVolume) player.setVolume(val); }
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtubePlayer', {
+                height: '0', width: '0',
+                videoId: videoIDs[0],
+                playerVars: { autoplay: 0, controls: 0, disablekb: 1, modestbranding: 1 },
+                events: { onReady: onPlayerReady, onStateChange: onPlayerStateChange }
+            });
+        }
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(tag);
+    </script>
+</body>
+</html>

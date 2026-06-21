@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wineko-official.github.io/sitemap.xml

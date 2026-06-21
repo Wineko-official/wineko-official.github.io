@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="p7rCIhTDEWJk_Ox5x84HYQa7boNyOX3ADDjbXnRIbbg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    
+    <title>Wineko | Lost in Time – офіційний фентезі-всесвіт</title>
+    <meta name="description" content="Lost in Time – фентезі-всесвіт Wineko. Книги, лор, бестіарій, вірші, музика та арти. Поринь у Етернхольт!">
+    <meta name="keywords" content="Wineko, Lost in Time, фентезі, книга, Етернхольт, лор, музика, вірші, балади">
+    <link rel="canonical" href="https://wineko-official.github.io/">
+    <meta name="robots" content="index, follow">
+
+    <!-- Головний тег, щоб Google написав "Wineko" замість "GitHub" -->
+<meta property="og:site_name" content="Wineko">
+
+<!-- Правильне підключення іконок для пошукових роботів -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wineko-official.github.io/">
+    <meta property="og:title" content="Wineko | Lost in Time – офіційний фентезі-всесвіт">
+    <meta property="og:description" content="Поринь у Етернхольт! Офіційний сайт автора Wineko: книги, інтерактивний бестіарій, балади та радіо.">
+    <meta property="og:image" content="https://wineko-official.github.io/Wineko%20Lost%20In%20Time.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wineko | Lost in Time – офіційний фентезі-всесвіт">
+    <meta name="twitter:description" content="Поринь у Етернхольт! Офіційний сайт автора Wineko.">
+    <meta name="twitter:image" content="https://wineko-official.github.io/Wineko%20Lost%20In%20Time.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Wineko | Lost in Time",
+      "url": "https://wineko-official.github.io/",
+      "description": "Офіційний сайт автора Wineko та фентезі-всесвіту Lost in Time. Книги, лор, радіо, арти.",
+      "author": {
+        "@type": "Person",
+        "name": "Wineko",
+        "url": "https://wineko-official.github.io/"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Wineko"
+      },
+      "keywords": "фентезі, книга, Lost in Time, Wineko, Етернхольт",
+      "inLanguage": "uk",
+      "mainEntityOfPage": "https://wineko-official.github.io/"
+    }
+    </script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #000;
+        color: #fff;
+        font-family: "Georgia", serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 10px;
+        overflow-x: hidden;
+      }
+
+      .site-container {
+        position: relative;
+        width: 100%;
+        max-width: 2000px;
+        display: block;
+        --font-scale: 1vw;
+      }
+
+      .bg-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        pointer-events: none;
+      }
+
+      .window-container {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #ccc;
+      }
+
+      .window-container h2 {
+        color: #fff;
+        font-size: calc(var(--font-scale) * 1.25);
+        font-weight: normal;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .window-container h3 {
+        color: #fff;
+        font-size: calc(var(--font-scale) * 1.05);
+        font-weight: normal;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        text-align: center;
+      }
+
+      .scroll-content {
+        width: 100%;
+        flex: 1;
+        overflow-y: auto;
+        padding: 2px 6px;
+      }
+
+      .scroll-content p {
+        font-size: calc(var(--font-scale) * 0.75);
+        line-height: 1.4;
+        margin-bottom: 8px;
+        text-align: justify;
+      }
+
+      .scroll-content::-webkit-scrollbar {
+        width: 3px;
+      }
+      .scroll-content::-webkit-scrollbar-thumb {
+        background: #444;
+        border-radius: 2px;
+      }
+
+      .donate-link {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .donate-img {
+        width: 100%;
+        max-width: 1000px;
+        height: auto;
+        display: block;
+        transition: transform 0.2s ease, filter 0.2s ease;
+        filter: drop-shadow(0 0 4px rgba(255, 100, 0, 0.2));
+      }
+      .donate-img:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 10px rgba(255, 150, 0, 0.6));
+      }
+
+      .center-pillar {
+        top: 22%;
+        left: 39.3%;
+        width: 21.8%;
+        height: 67%;
+      }
+
+      .avatar {
+        width: 50%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid #333;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+        margin-bottom: 12px;
+      }
+
+      .events-box {
+        top: 68.5%;
+        left: 11.2%;
+        width: 24%;
+        height: 21%;
+      }
+
+      .support-box {
+        top: 60.5%;
+        left: 65%;
+        width: 12.8%;
+        height: 29%;
+      }
+
+      .social-box {
+        top: 60.5%;
+        left: 80%;
+        width: 12.8%;
+        height: 29%;
+      }
+
+      .social-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: flex-start;
+        gap: 10px;
+        padding: 5px;
+      }
+
+      .social-grid a {
+        width: 20%;
+        max-width: 28px;
+        aspect-ratio: 1 / 1;
+        transition: transform 0.2s;
+      }
+      .social-grid a:hover {
+        transform: scale(1.2);
+      }
+      .social-grid img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 33%;
+        left: 18.8%;
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 14px;
+        z-index: 10;
+      }
+
+      .nav-menu a {
+        color: #fff;
+        text-decoration: none;
+        font-size: calc(var(--font-scale) * 0.85);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-family: "Georgia", serif;
+        white-space: nowrap;
+        text-align: right;
+        line-height: 1.4;
+        transition: all 0.3s ease;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+      }
+      .nav-menu a:hover {
+        color: #00d2ff;
+        text-shadow: 0 0 12px #00d2ff;
+        transform: translateX(-5px);
+      }
+
+      .audio-player {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: rgba(15, 15, 15, 0.9);
+        border: 1px solid #333;
+        padding: 8px 14px;
+        border-radius: 4px;
+        font-family: "Georgia", serif;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      }
+
+      .audio-player button {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid #444;
+        color: #fff;
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 13px;
+        font-family: "Georgia", serif;
+        transition: all 0.2s ease;
+      }
+
+      .audio-player button:hover {
+        border-color: #00d2ff;
+        text-shadow: 0 0 8px #00d2ff;
+        background: rgba(0, 210, 255, 0.05);
+      }
+
+      #trackName {
+        font-size: 12px;
+        color: #888;
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .volume-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+      }
+
+      #volumeSlider {
+        width: 70px;
+        accent-color: #00d2ff;
+        cursor: pointer;
+        background: #333;
+        height: 4px;
+        border-radius: 2px;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          align-items: flex-start;
+          padding: 80px 15px 20px 15px;
+          background-image: url('m.bg.png');
+          background-size: cover;
+          background-position: center top;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+        }
+        .site-container {
+          --font-scale: 4.5vw;
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+        }
+        .bg-image {
+          display: none;
+        }
+        .nav-menu {
+          position: static;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 15px;
+          margin-bottom: 10px;
+          border-bottom: 1px solid #222;
+          padding-bottom: 15px;
+        }
+        .nav-menu a {
+          font-size: 14px;
+          text-align: center;
+          white-space: normal;
+        }
+        .nav-menu a:hover {
+          transform: none;
+        }
+        .window-container {
+          position: static;
+          width: 100% !important;
+          height: auto !important;
+          background: rgba(15, 15, 15, 0.95);
+          border: 1px solid #222;
+          border-radius: 8px;
+          padding: 15px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        .window-container h2 {
+          font-size: 18px;
+          margin-bottom: 15px;
+        }
+        .window-container h3 {
+          font-size: 16px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+        .scroll-content {
+          overflow-y: visible;
+          padding: 0;
+        }
+        .scroll-content p {
+          font-size: 14px;
+          text-align: left;
+          margin-bottom: 12px;
+        }
+        .avatar {
+          width: 120px;
+          margin-bottom: 15px;
+        }
+        .social-grid {
+          gap: 15px;
+          justify-content: center;
+        }
+        .social-grid a {
+          width: 35px;
+          max-width: 35px;
+        }
+        .donate-img {
+          max-width: 60px;
+        }
+        .audio-player {
+          bottom: auto;
+          top: 15px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: calc(100% - 30px);
+          justify-content: space-between;
+          background: rgba(15, 15, 15, 0.95);
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+        #trackName {
+          max-width: 120px;
+        }
+      }
+    </style>
+</head>
+<body>
+<div class="site-container">
+    <img src="bg.png" class="bg-image" alt="Eternhold Interface" />
+
+    <nav class="nav-menu">
+        <a href="index.html">Головна</a>
+        <a href="lore.html">Світ та Лор</a>
+        <a href="books.html">Книги та <br />Проєкти</a>
+        <a href="poems.html">Вірші та <br>Балади</a>
+    </nav>
+
+    <div class="window-container center-pillar">
+        <h2>ПРО АВТОРА</h2>
+        <img class="avatar" src="Lost_in_Time_Ketrin.jpg" alt="Wineko" />
+        <h3>Біографія</h3>
+        <div class="scroll-content">
+            <p>Привіт! Мене звати Wineko, і я автор та творець фентезі-всесвіту "Lost in Time".</p>
+            <p>Я з тих людей, які обожнюють створювати власні світи з нуля. Землі Етернхольту, сюжетні повороти, характери героїв, магічні істоти на кшталт Грибожаба чи Орден Темного Ока — усе це від початку і до кінця вигадано виключно моєю головою та прописано моїми руками.</p>
+            <p>Я принципово не використовую штучний інтелект для генерації ідей, сюжету чи лору книги. Уся творча часть, кожне слово, кожна деталь світу і душа цієї історії — це повністю моя ручна робота. Технології я можу задіяти хіба що для того, аби виправити випадкові помилки в тексті, розставити розділові знаки.</p>
+            <p>Для мене дуже важливо, щоб герої книги не були картонними, тому я намагаюся прописувати їх як справжніх людей — зі своїми характерами, страхами, внутрішніми конфліктами та живими емоціями. Сподіваюся, вам буде цікаво спостерігати за Кетрін, Рюносуке та іншими персонажами.</p>
+            <p>Цей сайт — мій особистісний затишний куточок та архів, де я збираю енциклопедію світу і ділюся всесвітом, який створюю щодня. Дякую, що зазирнули в Етернхольт!</p>
+        </div>
+    </div>
+
+    <div class="window-container events-box">
+        <h3>Події та анонси</h3>
+        <div class="scroll-content">
+            <p>Незабаром тут з'являться свіжі новини, анонси нових розділів та ілюстрації всесвіту.</p>
+        </div>
+    </div>
+
+    <div class="window-container support-box">
+        <h3>Підтримати автора</h3>
+        <div class="scroll-content">
+            <p>Тут ви можете знайти інформацію про те, як допомогти розвитку проєкту "Lost in Time".</p>
+            <a href="donate.html" class="donate-link">
+                <img src="https://i.postimg.cc/6QByKGj8/Gemini-Generated-Image-gs2dp3gs2dp3gs2d-removebg-preview.png" class="donate-img" alt="Підтримати автора" />
+            </a>
+        </div>
+    </div>
+
+    <div class="window-container social-box">
+        <h3>соціальні мережі</h3>
+        <div class="scroll-content social-grid">
+            <a href="https://arkush.net/user/19778" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABnRSTlMAAAAAAABupgeRAAAAU0lEQVR4AWPABMZGOpgIIoVTddXa/2gIKIhd9f////FpwFSNTwOmamI1QFTA/UesBmREgga4VXAGlTR8/54BRxB1yAwgop4GTDQ4NWBPSLgQmmoAUDw2ie7Y0G8AAAAASUVORK5CYII=" /></a>
+            <a href="https://youtube.com/@lostintime_world" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABJklEQVR4Ae2WpVaFQRSFcaeS4QVwIjTiLbgk7D1w9xeg4FQcOu6acHeXtNnDmsFd7in/WetLI+f7dbYDAFEsAUvgoeAQ5k5iSQFpIH1kkMyQFXJMTsgpwTuc6jlHes2M3qNP71mge7g76DLNg8gygZ1QckGmuSdZJ7Azq8RDCSQTCJGgBCoFBWqVQLegQJcSmPnWIr9oICMXcIr4C4FJJbD9rUX+NtzX+CIQlfVbgS0lcP4jAVNt/UCA7acCZ0oAPxfQdXMLFNUBvpHflvgbAVM7h0B6zrfeD3kB+Ucg/xLKf4biPyLJX3GH9GFUogRSBQUSTSBZEwskQpFs1USyl6E0gRSRJtJPhsnci1B69oVQeqzXzOo9+kmj3juBeDw2BkSxBCyBO+9s03HRLVCoAAAAAElFTkSuQmCC" /></a>
+            <a href="https://www.tiktok.com/@lost_in_time_official" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAw1BMVEUAAAAAAAAFT1IAQUNBub6u5eexxcpyQ0wIAABaxsv5////9/nGj5oyAAD////84eeEYmvm4uN4f4A5P0MAFBXx+vu019khAAD60tr37vDlmqpXAAsALzAKc3gpo6hjpqr/6O3idYqcbHTSrLP6iJ9rABOc5Ofi+vvJYnXLbn8/AAI9HyWWIDhRz9TH9PffY3oDAAC99vjhSGe7KEenACiF4+f/1961PVaB09bFkZswjJGwuLr//f7xqbYYHh/9tsTiL1Yh8R0/AAAAAXRSTlP+GuMHfQAAANJJREFUeAG90kUCg1AMBNDiPtTd3d2V+5+quMOS2b6vSXI5IjnZIElSyUgzLMcnoSBKspKMUPMpiEKxVE5EVKr5WgTLBkr1BtBsBbHd6fZKOvYHw1F9PAkgSU9njXlNx8Vyxa2XfmxvtoC0M1GH/d6P3QPU8fFkY/Ar7Q0ag3ONIOKQvOB60i0WqSnUG6FnI6rzMJbvkB76zo5+wk0JIf8EGq9ndzN7f9bRrlQBcTYTcT22iAh+X9Ib7/dPm8Q1u5Zvfpq7c4uIQ56otVrLjEYzJX+4mxcG80U+CwAAAABJRU5ErkJggg==" /></a>
+            <a href="https://t.me/lostintime_world" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAY1BMVEX////8/f+41Pd7sfFFmO0gius9le1zrfCuzvby9/2QvPMTh+srjewzkOwykOwMhuvV5frB2figxvW20vfq8v1np/A4kuzv9f3i7fxtqvDO4fmWwPRQne7L3/kAguqGt/Ld6/s4puGjAAAA/0lEQVR4AayRhQ5DMQhFeVKFls5d/v8rt9I1YRLfjcLBgT9oGKfZGOt8+EYRDaWcExmePnAhk1MX4ajZgpNW5qXKY0lT4lVnA1X7I3cNTdEkJYNY+25eiahn2S53u0p5L3DsiZn4cAQAgXQSOFFjxpx2AAGgmBp5FjhnqWd9beGOvRQKrOvjptaDCxcAOJHA8IJmbA2uMoVT0D4b5Ntlt8i0g+YQCD0wk0GDd7EHFmjF8H0V2kilO4oRBQZOndbefdgCatGqjIcBbtWkMzQFfT9qs3L59c4sDNVDlx8PxQmURlY/Ja55SusNU24Iz3f41P4041M2FvitEB4jPp0DAHyFFi4xND68AAAAAElFTkSuQmCC" /></a>
+            <a href="https://www.facebook.com/profile.php?id=61588789587592" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAV1BMVEVHcEwHZv/O1v8HaP8Haf8IZ/8IaP8IZv8IZ/8IaP/r7/8IZ/8IZ/8AW/////+fsf8HZv////8AYP8AWf8AZP+Vqf/V3P8IZ/9wlP9jiv+tvP+Lpf82c/8XNRKaAAAAEHRSTlMAM/2GGN1h9exC+8LBwcGFy8UXywAAAPNJREFUKJFlk+kSgyAMhDnUQe2BQQtU3/85yxEi0P3l+E1gkyyMFXG5KmvVKjnrNSlNUlODhlE3GoebzVZ3sjMx+reDiYLwiXSgOrCHWJaPcIHafDLdB27L+sbSMfkk5rca6uiZejBLC1XoncxcSM7T7+kPZ7K78TIAmWnJHgTPyD7mbna9r4Sjh4phk7sxqVLEIeCxFiG1mISGLB67+xrmUqvQENRwMcWQ/D9WmNIKxwk4/01uvXMXGuJlfGFZR66iGahq8H99TtXKejjWy+4gLhtj0sG5CVgD74DlaNawjmYKNRxlAF2o03N4v0JOxLN6Dj8GhSiE70/PKAAAAABJRU5ErkJggg==" /></a>
+            <a href="https://drukarnia.com.ua/Wineko" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACzklEQVR4Ac3WAUSjYRwG8FtNVSWLLTURd8VqlaqCgBAUyB3AnTsArWlKdU2qJJIWCBIOoELhglRRVSqVBNxxx53rJFBRuW3fc4+/vFrWum/3jh5++rR37//B+2578RyTTC56R37q/09++kBuslLMOGiEflKYoIlBvylATooaO82SQUigz9FKWGhQDU+8ACWTyiv6RjCjsrJSxFHgF7lJ5TUFzWxSV1eHk5MTwed4zsR7Umkzs0FNTQ2Oj49xF3mura01W8JPKu2Ef1FdXY3Dw0M8zNHRkbxmokC/6QLl5eU4ODjAI5HXKioqElMgIyMDCwsLeCpLS0twOBx6C1gsFqSmpsLj8eDy8hKxYhgGurq69BZwOp0YGhpCQUGBlLi6ulIDb29vcXZ2JoPvH8q8vDx9BZqamnBzc4OZmRnk5+fD6/VKiWAwiLGxMfksWFxcjCjV3Nysr0B3d7fafHp6GpmZmfD5fBgdHUVWVpasqaqqwunpqVrX09Ojr0AgEFAbr6ysID09HVarFSkpKWpNWloalpeX1bqJiQl9BcbHx9XGa2trciPu3w4eUCm1urqq1rG0vgIdHR1q4/Pzc9TX18v/c3JyMDU1heHhYWRnZ0vRUCgEMJ2dnfoKNDY24vr6WpXY2NhAQ0ODDA+Hw3LoBgYGYLfbMTk5KQeU79FWQDbe29vD/VxcXMgtuIvckr6+PuTm5spV5V9tBURra6sMjBEp4ff71eHUWsBms2F+fh5PZW5uTg6m7gKiqKgI6+vreCybm5soLi5O2LehKCkpwdbWFh5me3sbpaWlcX8de0y8UQbt7Oyo4bu7u3C73SaGi15SaaE/ZjYoKyvD/v4+SP0GMMGgt6RSSF8IZrhcLsFns36QiyLSS2FCghk0QkkUERt9olCCh8+Sg6LGRh/pKwUJmoToOw2SnWImiQqphdrIR+1x8pGX3tBL2fu55S9QftXBRmdb5wAAAABJRU5ErkJggg==" /></a>
+            <a href="https://ru.pinterest.com/lostintime_world/" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAKlBMVEVHcEzmACPmACPmACPmACLmACPmACPmACPmACPmACPlACPmACPmACPmACNXoEKOAAAADXRSTlMAeg3EBduLpk9lJS7p902OrQAAALtJREFUKJG9UksWxCAIQ0XwU+9/3QHss1rH3bxhpYTEAAL8Ibw/AOhik4gOd8y1Ee6NhTZF+IYxEe+oaeZ+Ti9l1HuRPFESy3rDhZihmmJE4z5U7UHpHPp7l9QMUL0InSzdPKirMRc5k2RK16j2jJ9AFrCahtTQBFpKbGTIdrKuF0MMLRmFTOkxdM8VwUd1FZZWsHcI3lqndQidyvJkTvnaFqNKCfi8lgoHTJVLOi1bRoHh+E16wemD/TQ+ta8LyZ7XxUgAAAAASUVORK5CYII=" /></a>
+            <a href="https://x.com/Wineko_official" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAAA/0lEQVR4AbXPIazCMACE4d+L2qoZFEGSIGcRc/gJJB5XMzGJmK9EN0HMi+qaibkKVF1txdQe4g0YzPK5yyWXHL9TaPNQ89LojH87N1rbJcXkMF4Fk31UMrf34hm14KUeoQxGArALHTMuQD2cAWQfJXOpgTbksGr9ng8qluShJTPhyCdx63POg7rEim95ZyR68I1ggQpnCEGwyPicw6hZtPEGmnhkycqOio1zm6XuFtyw5XDXfGvuau0dXHzJp8pfBPuhIXO9ZK5ILUCdSvLYMpc6ASBtl3EaC97I4KaFaOCaBE9Zn5jUsVqR2vcTJZO1DdbGoZryVp94Ka/mQfE7f2T3df0WBhLDAAAAAElFTkSuQmCC" /></a>
+            <a href="https://www.instagram.com/lost_in_time_world/" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABcVBMVEVHcEx3GPlwGPx1FvyDC/OWBumqA+K+AeDQANvVAs7rDa7jAtfoAMflAriKGP2ZCvunAvLEG/TgV9/oZt72G8nxB8nxALCKHPymGf7Pg/H86vf////zds79AcD9ALT3DZ30t+j63fP1st31quT8AKf8AJn98/jaO973Lr38AIvAAOz8Drn4V7370PHiGe34E6n7HZv9AHv5wOP1Wpr8D5H9AGz9GYX6q8r2YKL5dZP3tMT8D2/8KW31Y5f9AV/9Inn+G17+KFf3v879J0f+MUf5g2v3wbr9Nyz6RUP9Ml/9Qxr+SjX7zcr6Gkb8AEL+UQ/9Wiv98uT70rD8XQT8ZxD9ZCr40sP4Tn/9cAz+egj9ciX1km/1X1L9O0j4nD7+hAT9hRb8fh34unb9jQT3jZX73a78dwX+mwL6ymPzoZD8YSf9qAD+sQD7wBL8zEn5tV79jwb+uAD+vgH+wwD+LHP8owX+ygD6Olj7rQz+twf8UjMSMf5jAAAAe3RSTlMAW9L////////FW///2P///////////8b/////////xf///////////////////////////v/////////////////////////////////////////////////////////////////F////W////f//2f///9fY/9hbxcXA5ZvtAAACBUlEQVR4AUTPRaLkNhSF4f9IV3Kp/JjfCzMzM8xCG8lWMs9SsoIkTdNmZubiKtvqduMnZl0BkgCBEI+zhiBwD5f0ZA3wQj1Eu1YiMZQADyAA9SRXgpCEaGXcODFKoq/NEXRHXYmnshMak0xdGC/PiO1Mi1rTbA0LyM/BOOWyuISrHyLPTRoKZDaBndvoQrezQA/IWlBe6DXCsOdgong+bdCLyzW5F3VzpY7TckLH4ESRlvsbNlj2V4DNu3klk/Ed8HUvYlVKwa4NSmedWzNX1dbUcxlzsJMgxNppsywKv6l5M9YJZtizxOfObknxVOkVaAblle1BB0JNssXaJhA05tlKMOrcIXcMSOBc8IBvqzbQZC8SjIfMwxxz0iLnn0vQS+cx7ye0nPcPT7qPBmk2my7b4A0XlmiNzEMDQfD53vLF6sigLHLGMyzBCMzaawXf/HcAPqpmvqbDq5dGlQVjlexMYvqD0C3P+iVOccGBM0L1+d6uYozzRc6TbvA3/cI0r7g4dgoKy/SCee+akH32ltf38muG0kzR+PUfPl+DHq1in3jnSp8ZtjAxgz+u7OUJfb51cmk0Tqf158QwgcQUmM5zy9+tqnr9+nCf+3seU4hFCKHsptStxoEQg4fPhp7dP1dB8u6+LFzjqOq6afof/IWH/38O40irXXZ1g2+q99K9TWBgAACS27uoe/IOhgAAAABJRU5ErkJggg==" /></a>
+            <a href="https://www.threads.com/@lost_in_time_world" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAABH0lEQVR4AbWSIYyDQBBFH17hmuAdSdW50zhsPR5bh0FiUCjU+gSFF7jVaCQGt4oE9S9Hk7LctbJPzsts5s8swWsA8CR77Z188k8C17xtywTgj4Ri0c7WXThLLqNkm7Ko+1XuBsEhYZT95oGRUk9Co4EnhWZ/snB1EZB1fR0DvUqOzrtaiEdJWnOINXudgxLIZfOs0RpDlXty3AASgEo1eNMSOAdAWhljZIEjJ6EmgE47a7NXz7LRXGZZtUnWfxa3AJOLgZsGq9rPOW27jIBeOesSnKKkYDQW915ziFV8WoKBYJCkKYHhJC/bGgG3uskBnAt5t/hW3ekqjBqvPOjkokPuUa0225bl77GXKycCqGY9MCEv+Lo3pkz5AIH3aeEHHHmiORlPs9IAAAAASUVORK5CYII=" /></a>
+            <a href="https://www.wattpad.com/user/Wineko" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAALVBMVEVHcEz/UAr/UAr/UAr/UAr/UAr/UAr/UAr/UAr/UAr/UAr/UAr/UAr/UAr/UAo/OVaWAAAADnRSTlMASxzr9jAK3oikX7nMcyQTUVEAAAC9SURBVCiRxZFJEgMhCEVFmZy4/3Hj2N2VmG3CRuo/4Jfg3N+DwL8pPmmaiUoo0DNOWnlI0cxqT3JLLPsuoWGv4tol8Y4GMwFH0t4BZ30gjoNZACp7wiwzpIQL1rwGtIAhhlQmM5QuoPIDbrYizy8lO0SYfzvDyB8QcTfS2g/gXb+N9Vpn2Ewgrwl0QbmN1h7ivfa8jWD5X45tt7obveNhWh8XA9mNzSOGkvgBWee+zufndmNRPkPHBPQF/TxedWsPL1hxOEwAAAAASUVORK5CYII=" /></a>
+        </div>
+    </div>
+</div>
+
+<!-- АУДІОПЛЕЄР – НІКОЛИ НЕ ГРАЄ АВТОМАТИЧНО -->
+<div class="audio-player">
+    <button id="musicBtn" onclick="toggleMusic()">🎵 Увімкнути радіо</button>
+    <span id="trackName">📻 Радіо Етернхольт</span>
+    <div class="volume-container">
+        <span>🔈</span>
+        <input type="range" id="volumeSlider" min="0" max="100" value="30" oninput="changeVolume(this.value)">
+        <span>🔊</span>
+    </div>
+</div>
+<div id="youtubePlayer" style="display: none;"></div>
+
+<script>
+    const videoIDs = ["3y_6zqa5jn8","moKNkLdjKws","T5GdIQHGhv0","K_pY6pdh_2M","fL1327aZdfc","vrZLMxPcHYM","d2FW1DcMdiw","liIizxQ6z4A","Ml9rMQdqDQU","FZCCWVIcFYo","_9vRwdG7IvU","ezYuc1jnP9I"];
+    const trackNames = ["Wi-Range - Lyric Story","Wi-Range - Intro","Wi-Range - Skeleton Knight","Wi-Range - Future","Wi-Range - Miami beach","Wi-Range - Night Ranger","Wi-Range & DENIS-G - Night City of Miami","Wi-Range & DENIS-G - NIGHT ROAD (ORIGINAL MIX)","Wi_Range feat Denis-g - back to 80's","Wi_Range - Revenge","Wi_range - Iron age","Wi-Range - Lost In Time"];
+
+    let player = null;
+    let isPlaying = false;
+    let currentTrack = -1;
+    let currentTime = 0;
+    let isPlayerReady = false;
+
+    // Функції збереження/відновлення стану (тільки трек і позиція, БЕЗ автоплею)
+    function saveState() {
+        if (currentTrack !== -1 && isPlayerReady) {
+            localStorage.setItem('radio_track', currentTrack);
+            localStorage.setItem('radio_time', currentTime);
+            // Не зберігаємо стан isPlaying, щоб не грало автоматично
+        }
+    }
+
+    function loadSavedState() {
+        const savedTrack = localStorage.getItem('radio_track');
+        const savedTime = parseFloat(localStorage.getItem('radio_time'));
+        if (savedTrack !== null && savedTrack >= 0 && isPlayerReady) {
+            currentTrack = parseInt(savedTrack);
+            currentTime = isNaN(savedTime) ? 0 : savedTime;
+            // НЕ відновлюємо isPlaying — залишаємо false
+            isPlaying = false;
+            document.getElementById("trackName").innerText = "📻 " + trackNames[currentTrack];
+            // Завантажуємо трек на 0 секунді, потім перемотуємо
+            player.loadVideoById({ videoId: videoIDs[currentTrack], startSeconds: 0 });
+            let interval = setInterval(() => {
+                const dur = player.getDuration();
+                if (dur && dur > 0 && currentTime < dur) {
+                    clearInterval(interval);
+                    player.seekTo(currentTime, true);
+                    // Не запускаємо відтворення, тільки встановлюємо позицію
+                    player.pauseVideo();
+                }
+            }, 100);
+        } else {
+            currentTrack = -1;
+        }
+    }
+
+    function onPlayerReady() {
+        isPlayerReady = true;
+        loadSavedState(); // Завантажуємо збережений стан, але не граємо
+        // Оновлюємо час кожні 2 секунди
+        setInterval(() => {
+            if (player && player.getCurrentTime && isPlayerReady && currentTrack !== -1) {
+                const t = player.getCurrentTime();
+                if (t && !isNaN(t)) {
+                    currentTime = t;
+                    saveState();
+                }
+            }
+        }, 2000);
+    }
+
+    function onPlayerStateChange(event) {
+        const btn = document.getElementById("musicBtn");
+        if (event.data === YT.PlayerState.PLAYING) {
+            isPlaying = true;
+            if (btn) { btn.innerText = "⏸ Пауза"; btn.style.borderColor = "#ff6400"; }
+            saveState();
+        } else if (event.data === YT.PlayerState.PAUSED) {
+            isPlaying = false;
+            if (btn) { btn.innerText = "🎵 Увімкнути радіо"; btn.style.borderColor = "#444"; }
+            saveState();
+        } else if (event.data === YT.PlayerState.ENDED && currentTrack !== -1) {
+            // Трек закінчився – наступний випадковий з початку
+            let newTrack = currentTrack;
+            while (newTrack === currentTrack && videoIDs.length > 1) {
+                newTrack = Math.floor(Math.random() * videoIDs.length);
+            }
+            currentTrack = newTrack;
+            currentTime = 0;
+            document.getElementById("trackName").innerText = "📻 " + trackNames[currentTrack];
+            player.loadVideoById({ videoId: videoIDs[currentTrack], startSeconds: 0 });
+            if (isPlaying) player.playVideo(); // якщо радіо грало, продовжуємо
+            saveState();
+        }
+    }
+
+    function toggleMusic() {
+        if (!player || !isPlayerReady) {
+            console.warn("Player not ready");
+            return;
+        }
+        if (!isPlaying) {
+            if (currentTrack === -1) {
+                // Перший запуск – випадковий трек з випадкової позиції
+                currentTrack = Math.floor(Math.random() * videoIDs.length);
+                currentTime = 0;
+                document.getElementById("trackName").innerText = "📻 " + trackNames[currentTrack];
+                player.loadVideoById({ videoId: videoIDs[currentTrack], startSeconds: 0 });
+                let interval = setInterval(() => {
+                    const dur = player.getDuration();
+                    if (dur && dur > 0) {
+                        clearInterval(interval);
+                        const randomSeek = Math.random() * (dur * 0.7);
+                        player.seekTo(randomSeek, true);
+                        player.playVideo();
+                    }
+                }, 100);
+                isPlaying = true;
+            } else {
+                // Продовжити поточний трек
+                player.playVideo();
+            }
+        } else {
+            player.pauseVideo();
+        }
+    }
+
+    function changeVolume(val) {
+        if (player && player.setVolume) player.setVolume(val);
+    }
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtubePlayer', {
+            height: '0', width: '0',
+            videoId: videoIDs[0],
+            playerVars: { autoplay: 0, controls: 0, disablekb: 1, modestbranding: 1 },
+            events: {
+                onReady: onPlayerReady,
+                onStateChange: onPlayerStateChange
+            }
+        });
+    }
+
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+</script>
+</body>
+</html>

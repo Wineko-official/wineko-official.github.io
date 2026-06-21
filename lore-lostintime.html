@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    
+    <!-- Базове SEO -->
+    <title>Енциклопедія Lost in Time | Персонажі та Істоти – Wineko</title>
+    <meta name="description" content="Інтерактивна енциклопедія всесвіту Lost in Time. Детальний опис та ілюстрації персонажів, героїв та міфічних істот бестіарію Етернхольту.">
+    <meta name="keywords" content="Lost in Time, бестіарій, персонажі, істоти, Етернхольт, фентезі енциклопедія, Wineko">
+    <link rel="canonical" href="https://wineko-official.github.io/lore-lostintime.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Wineko Lost In Time.png">
+
+    <!-- Open Graph / Telegram / Discord / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wineko-official.github.io/lore-lostintime.html">
+    <meta property="og:title" content="Енциклопедія Lost in Time | Персонажі та Істоти – Wineko">
+    <meta property="og:description" content="Відкрийте бестіарій та хроніки Етернхольту. Інтерактивний перегляд істот та героїв всесвіту Lost in Time.">
+    <meta property="og:image" content="https://wineko-official.github.io/Wineko%20Lost%20In%20Time.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Енциклопедія Lost in Time | Персонажі та Істоти – Wineko">
+    <meta name="twitter:description" content="Інтерактивний бестіарій та опис персонажів фентезі-всесвіту Lost in Time.">
+    <meta name="twitter:image" content="https://wineko-official.github.io/Wineko%20Lost%20In%20Time.png">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Контейнер, який масштабується разом із фоном */
+        .interface {
+            position: relative;
+            width: 100%;
+            /* Пропорція фонової картинки (заміни на реальну, якщо знаєш) */
+            aspect-ratio: 1920 / 1080; /* приклад, підстав своє співвідношення */
+            background-image: url('bg_lore_lostintime.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            margin: 0 auto;
+        }
+
+        /* Для старих браузерів, які не підтримують aspect-ratio, задамо висоту через padding-bottom */
+        @supports not (aspect-ratio: 1/1) {
+            .interface {
+                height: 0;
+                padding-bottom: 56.25%; /* 16:9 = 56.25%, заміни на свою пропорцію */
+                background-size: contain;
+            }
+        }
+
+        /* ========== ПОСТАМЕНТ ДЛЯ ЗОБРАЖЕННЯ ========== */
+     .pedestal-area {
+    position: absolute;
+    left: 41%;
+    top: -0.1%;          /* підняв трохи вище, щоб збільшити висоту */
+    width: 20%;       /* трохи ширше */
+    height: 32%;      /* вище, щоб вмістити більше зображення */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;  /* притискає до низу */
+    pointer-events: none;
+    z-index: 5;
+}
+
+.pedestal-image {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+    object-position: bottom center;
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.7));
+}
+
+        /* ========== ПАНЕЛЬ ВИБОРУ (ПРАВА АРКА) ========== */
+        .menu-area {
+            position: absolute;
+            left: 74.8%;
+            top: 33.9%;
+            width: 20%;
+            height: 11%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            border-radius: 12px;
+            border: 1px solid #7a5a4a;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+        .tab-btn {
+            flex: 1;
+            background: rgba(30,20,15,0.8);
+            border: none;
+            padding: 4px 0;
+            color: #ddc;
+            font-family: 'Georgia', serif;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border-radius: 6px 6px 0 0;
+        }
+        .tab-btn.active {
+            background: #4a3a2a;
+            color: #ffd8a0;
+            font-weight: bold;
+        }
+        .list-container {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 4px;
+            font-size: 0.7rem;
+        }
+        .list-group {
+            margin-bottom: 6px;
+        }
+        .list-letter {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #c8aa7a;
+            border-bottom: 1px solid #5a4a3a;
+            margin-bottom: 2px;
+        }
+        .list-item {
+            padding: 2px 6px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.1s;
+        }
+        .list-item:hover {
+            background: #4a3a2a;
+            color: #fff;
+        }
+        .list-item.selected {
+            background: #6a4a2a;
+            color: #ffd;
+            font-weight: bold;
+        }
+
+        /* ========== ТЕКСТОВА ПАНЕЛЬ (ОСНОВНИЙ БЛОК) ========== */
+        .lore-area {
+            position: absolute;
+            left: 29%;
+            top: 55%;
+            width: 41.5%;
+            height: 28%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+            border: 1px solid #6a5a4a;
+            border-radius: 16px;
+            padding: 12px 20px;
+            color: #f0e6d0;
+            overflow-y: auto;
+            z-index: 10;
+        }
+        .lore-area h2 {
+            font-size: 1.6rem;
+            margin-bottom: 0.2rem;
+            color: #ffd8a0;
+        }
+        .lore-area h3 {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            color: #c8aa7a;
+        }
+       .lore-area p {
+    white-space: pre-wrap;    /* зберігає переноси рядків */
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+    .lore-area p strong {
+    color: #ffd8a0;           /* золотавий колір для заголовків */
+}
+.lore-area p em {
+    color: #c8aa7a;
+}
+
+        /* Кнопка назад */
+        .back-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid #b89a7a;
+            color: #ffd8a0;
+            padding: 6px 14px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+            z-index: 100;
+        }
+        .back-link:hover {
+            background: #4a3a2a;
+            border-color: #ffd8a0;
+        }
+
+    /* ========== МОБІЛЬНА ВЕРСІЯ ========== */
+@media (max-width: 768px) {
+    .interface {
+        aspect-ratio: auto;
+        height: auto;
+        background-size: cover;
+        background-attachment: scroll;
+    }
+    .pedestal-area,
+    .menu-area,
+    .lore-area {
+        position: static;
+        width: 90%;
+        margin: 15px auto;
+        height: auto;
+    }
+    .pedestal-area {
+        width: 260px;
+        height: 280px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        overflow: visible;
+    }
+    .pedestal-image {
+        width: auto;
+        height: auto;
+        max-width: 110%;
+        max-height: 110%;
+        object-fit: contain;
+        object-position: center bottom;
+        filter: drop-shadow(0 0 10px rgba(0,0,0,0.7));
+        /* Одночасно зсуваємо вниз (5%) і вліво (-10px). Для зсуву вправо зміни -10px на +10px */
+        transform: translateX(16px) translateY(5%);
+    }
+    .menu-area {
+        height: 280px;
+    }
+    .lore-area {
+        max-height: none;
+    }
+    .back-link {
+        position: static;
+        display: inline-block;
+        margin: 20px auto;
+        width: fit-content;
+    }
+}
+    </style>
+</head>
+<body>
+<div class="interface">
+    <div class="pedestal-area">
+        <img id="pedestalImg" class="pedestal-image" src="" alt="Entity" style="display: none;">
+    </div>
+
+    <div class="menu-area">
+        <div class="tabs">
+            <button class="tab-btn" data-category="characters">Персонажі</button>
+            <button class="tab-btn" data-category="creatures">Істоти</button>
+        </div>
+        <div id="entityList" class="list-container">
+            <div class="list-group">Завантаження...</div>
+        </div>
+    </div>
+
+    <div class="lore-area" id="lorePanel">
+        <h2 id="entityName">-</h2>
+        <h3 id="entityTitle"></h3>
+        <p id="entityDesc">Оберіть персонажа чи істоту зі списку.</p>
+    </div>
+
+    <a href="lore.html" class="back-link">← Повернутися до світів</a>
+</div>
+
+<script>
+        const BASE_PATH = 'bestiary/';
+    const categories = {
+        characters: { manifestUrl: BASE_PATH + 'characters.json', folder: 'characters' },
+        creatures:  { manifestUrl: BASE_PATH + 'creatures.json',  folder: 'creatures' }
+    };
+
+    let currentCategory = 'characters';
+    let currentItems = [];      // масив об'єктів {slug, name}
+    let currentSelectedSlug = null;
+
+    const pedestalImg = document.getElementById('pedestalImg');
+    const entityListDiv = document.getElementById('entityList');
+    const entityNameSpan = document.getElementById('entityName');
+    const entityTitleSpan = document.getElementById('entityTitle');
+    const entityDescP = document.getElementById('entityDesc');
+
+    async function fetchManifest(category) {
+        const url = categories[category].manifestUrl;
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return await res.json();
+        } catch (err) {
+            console.error(`Помилка завантаження ${category}:`, err);
+            return [];
+        }
+    }
+
+    async function fetchEntityData(category, slug) {
+        const folder = categories[category].folder;
+        const url = `${BASE_PATH}${folder}/${slug}/data.json`;
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return await res.json();
+        } catch (err) {
+            console.error(`Помилка завантаження ${slug}:`, err);
+            return null;
+        }
+    }
+
+    function displayEntity(category, slug, data) {
+        if (!data) return;
+        currentSelectedSlug = slug;
+        entityNameSpan.innerText = data.name || 'Без назви';
+        entityTitleSpan.innerText = data.title || '';
+        entityDescP.innerText = data.description || 'Опис відсутній.';
+
+        const imgPath = `${BASE_PATH}${categories[category].folder}/${slug}/image.png`;
+        pedestalImg.src = imgPath;
+        pedestalImg.style.display = 'block';
+        pedestalImg.onerror = () => {
+            pedestalImg.style.display = 'none';
+            console.warn(`Зображення не знайдено: ${imgPath}`);
+        };
+    }
+
+    // Побудова списку з группуванням за першою літерою УКРАЇНСЬКОГО імені
+    function buildList(items, category) {
+        if (!items.length) {
+            entityListDiv.innerHTML = '<div class="list-group">Немає даних</div>';
+            return;
+        }
+        const groups = {};
+        items.forEach(item => {
+            const name = item.name;
+            const firstChar = name.charAt(0).toUpperCase();
+            // Підтримка українських літер (кирилиця)
+            let letter = firstChar;
+            if (!groups[letter]) groups[letter] = [];
+            groups[letter].push({ slug: item.slug, name: name });
+        });
+        // Сортування літер: спочатку кирилиця в алфавітному порядку, потім латиниця
+        const sortedLetters = Object.keys(groups).sort((a, b) => {
+            const isCyrillicA = /^[А-ЯҐЄІЇ]/.test(a);
+            const isCyrillicB = /^[А-ЯҐЄІЇ]/.test(b);
+            if (isCyrillicA && !isCyrillicB) return -1;
+            if (!isCyrillicA && isCyrillicB) return 1;
+            return a.localeCompare(b, 'uk');
+        });
+        let html = '';
+        for (let letter of sortedLetters) {
+            html += `<div class="list-group"><div class="list-letter">${letter}</div>`;
+            // Сортуємо імена всередині групи
+            groups[letter].sort((x, y) => x.name.localeCompare(y.name, 'uk'));
+            groups[letter].forEach(item => {
+                html += `<div class="list-item" data-slug="${item.slug}">${item.name}</div>`;
+            });
+            html += `</div>`;
+        }
+        entityListDiv.innerHTML = html;
+        document.querySelectorAll('.list-item').forEach(item => {
+            item.addEventListener('click', async (e) => {
+                const slug = item.dataset.slug;
+                document.querySelectorAll('.list-item').forEach(el => el.classList.remove('selected'));
+                item.classList.add('selected');
+                const data = await fetchEntityData(category, slug);
+                if (data) displayEntity(category, slug, data);
+            });
+        });
+        const firstItem = document.querySelector('.list-item');
+        if (firstItem) firstItem.click();
+    }
+
+    async function loadCategory(category) {
+        currentCategory = category;
+        entityListDiv.innerHTML = '<div class="list-group">Завантаження...</div>';
+        const items = await fetchManifest(category);
+        currentItems = items;
+        if (items.length === 0) {
+            entityListDiv.innerHTML = '<div class="list-group">Немає сутностей</div>';
+            pedestalImg.style.display = 'none';
+            entityNameSpan.innerText = '-';
+            entityTitleSpan.innerText = '';
+            entityDescP.innerText = 'Немає даних для цієї категорії.';
+            return;
+        }
+        buildList(items, category);
+    }
+
+    function initTabs() {
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cat = btn.dataset.category;
+                if (cat === currentCategory) return;
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                loadCategory(cat);
+            });
+        });
+        document.querySelector('.tab-btn[data-category="characters"]').classList.add('active');
+    }
+
+    initTabs();
+    loadCategory('characters');
+
+    
+</script>
+</body>
+</html>

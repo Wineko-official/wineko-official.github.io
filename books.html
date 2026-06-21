@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    
+    <!-- Базове SEO -->
+    <title>Wineko | Книги та проєкти всесвіту Lost in Time</title>
+    <meta name="description" content="Літературні проєкти Wineko: книга Lost in Time, плани, арти, історія створення.">
+    <meta name="keywords" content="книга Lost in Time, Wineko, фентезі книга, проєкти, Етернхольт">
+    <link class="canonical" rel="canonical" href="https://wineko-official.github.io/books.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Wineko Lost In Time.png">
+
+    <!-- Open Graph / Telegram / Discord / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wineko-official.github.io/books.html">
+    <meta property="og:title" content="Wineko | Книги та проєкти всесвіту Lost in Time">
+    <meta property="og:description" content="Літературні проєкти Wineko: книга Lost in Time, плани, арти, історія створення.">
+    <meta property="og:image" content="https://wineko-official.github.io/Wineko%20Lost%20In%20Time.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wineko | Книги та проєкти всесвіту Lost in Time">
+    <meta name="twitter:description" content="Літературні проєкти Wineko: книга Lost in Time, плани, арти, історія створення.">
+    <meta name="twitter:image" content="https://wineko-official.github.io/Wineko%20Lost%20In%20Time.png">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #000; color: #fff; font-family: 'Georgia', serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 10px; overflow-x: hidden; }
+        .site-container { position: relative; width: 100%; max-width: 2000px; display: block; --font-scale: 1vw; }
+        .bg-image { width: 100%; height: auto; display: block; pointer-events: none; }
+        .window-container { position: absolute; display: flex; flex-direction: column; align-items: center; color: #ccc; }
+        .window-container h2 { color: #fff; font-size: calc(var(--font-scale) * 1.25); font-weight: normal; letter-spacing: 2px; margin-bottom: 10px; text-align: center; }
+        .window-container h3 { color: #fff; font-size: calc(var(--font-scale) * 1.05); font-weight: normal; letter-spacing: 1px; margin-bottom: 8px; text-align: center; }
+        .scroll-content { width: 100%; flex: 1; overflow-y: auto; padding: 2px 6px; }
+        .scroll-content p { font-size: calc(var(--font-scale) * 0.75); line-height: 1.4; margin-bottom: 12px; text-align: justify; }
+        .scroll-content::-webkit-scrollbar { width: 3px; }
+        .scroll-content::-webkit-scrollbar-thumb { background: #444; border-radius: 2px; }
+        .center-pillar { top: 22%; left: 39.3%; width: 21.8%; height: 67%; }
+        .book-cover { width: 55%; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px; border: 1px solid #444; box-shadow: 0 0 15px rgba(0,0,0,0.9); margin-bottom: 12px; }
+        .read-button { display: block; width: 100%; padding: 10px; margin-top: 15px; text-align: center; color: #fff; background: rgba(255,255,255,0.03); border: 1px solid #333; text-decoration: none; border-radius: 4px; font-size: calc(var(--font-scale) * 0.8); transition: all 0.2s ease; font-family: 'Georgia', serif; }
+        .read-button:hover { background: rgba(0,210,255,0.1); border-color: #00d2ff; text-shadow: 0 0 8px #00d2ff; transform: scale(1.02); }
+        .nav-menu { position: absolute; top: 33%; left: 18.8%; width: 15%; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; z-index: 10; }
+        .nav-menu a { color: #fff; text-decoration: none; font-size: calc(var(--font-scale) * 0.85); text-transform: uppercase; letter-spacing: 2px; font-family: 'Georgia', serif; white-space: nowrap; text-align: right; line-height: 1.4; transition: all 0.3s ease; text-shadow: 0 0 8px rgba(255,255,255,0.3); }
+        .nav-menu a:hover { color: #00d2ff; text-shadow: 0 0 12px #00d2ff; transform: translateX(-5px); }
+        .audio-player { position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; align-items: center; gap: 15px; background: rgba(15,15,15,0.9); border: 1px solid #333; padding: 8px 14px; border-radius: 4px; font-family: 'Georgia', serif; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+        .audio-player button { background: rgba(255,255,255,0.03); border: 1px solid #444; color: #fff; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-size: 13px; font-family: 'Georgia', serif; transition: all 0.2s ease; }
+        .audio-player button:hover { border-color: #00d2ff; text-shadow: 0 0 8px #00d2ff; background: rgba(0,210,255,0.05); }
+        #trackName { font-size: 12px; color: #888; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .volume-container { display: flex; align-items: center; gap: 5px; font-size: 11px; }
+        #volumeSlider { width: 70px; accent-color: #00d2ff; cursor: pointer; }
+        @media (max-width: 768px) {
+            body { align-items: flex-start; padding: 80px 15px 20px 15px; background-image: url('m.bg.png'); background-size: cover; background-position: center top; background-repeat: no-repeat; background-attachment: fixed; }
+            .site-container { --font-scale: 4.5vw; height: auto; display: flex; flex-direction: column; gap: 25px; }
+            .bg-image { display: none; }
+            .nav-menu { position: static; width: 100%; align-items: center; justify-content: center; flex-direction: row; flex-wrap: wrap; gap: 15px; margin-bottom: 10px; border-bottom: 1px solid #222; padding-bottom: 15px; }
+            .nav-menu a { font-size: 14px; text-align: center; white-space: normal; }
+            .nav-menu a:hover { transform: none; }
+            .window-container { position: static; width: 100% !important; height: auto !important; background: rgba(15,15,15,0.95); border: 1px solid #222; border-radius: 8px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+            .window-container h2 { font-size: 18px; margin-bottom: 15px; }
+            .window-container h3 { font-size: 16px; margin-bottom: 10px; }
+            .book-cover { width: 140px; margin-bottom: 15px; }
+            .scroll-content { overflow-y: visible; padding: 0; }
+            .scroll-content p { font-size: 14px; text-align: left; margin-bottom: 12px; }
+            .read-button { font-size: 15px; padding: 14px 10px; }
+            .read-button:hover { transform: none; }
+            .audio-player { bottom: auto; top: 15px; left: 50%; transform: translateX(-50%); width: calc(100% - 30px); justify-content: space-between; background: rgba(15,15,15,0.95); flex-wrap: wrap; gap: 10px; }
+            #trackName { max-width: 120px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-container">
+        <img src="bg.png" class="bg-image" alt="Eternhold Interface">
+        <nav class="nav-menu">
+            <a href="index.html">Головна</a>
+            <a href="lore.html">Світ та Лор</a>
+            <a href="books.html">Книги та <br>Проєкти</a>
+            <a href="poems.html">Вірші та <br>Балади</a>
+        </nav>
+        <div class="window-container center-pillar">
+            <h2>ПРОЄКТИ</h2>
+            <img class="book-cover" src="Lost_in_Time_Ketrin.jpg" alt="Lost in Time">
+            <h3>"Lost in Time"</h3>
+            <div class="scroll-content">
+                <p>Головний літературний проєкт всесвіту Етернхольт. Це історія про подорожі крізь час, втрачені епохи та складні долі персонажів, які намагаються змінити приречений світ.</p>
+                <p>Ви можете читати нові розділи книги, стежити за розвитком сюжету та занурюватися в історію Кетрін на офіційних літературних платформах.</p>
+            </div>
+        </div>
+    </div>
+    <!-- АУДІОПЛЕЄР – НІКОЛИ НЕ ГРАЄ АВТОМАТИЧНО -->
+<div class="audio-player">
+    <button id="musicBtn" onclick="toggleMusic()">🎵 Увімкнути радіо</button>
+    <span id="trackName">📻 Радіо Етернхольт</span>
+    <div class="volume-container">
+        <span>🔈</span>
+        <input type="range" id="volumeSlider" min="0" max="100" value="30" oninput="changeVolume(this.value)">
+        <span>🔊</span>
+    </div>
+</div>
+<div id="youtubePlayer" style="display: none;"></div>
+
+<script>
+    const videoIDs = ["3y_6zqa5jn8","moKNkLdjKws","T5GdIQHGhv0","K_pY6pdh_2M","fL1327aZdfc","vrZLMxPcHYM","d2FW1DcMdiw","liIizxQ6z4A","Ml9rMQdqDQU","FZCCWVIcFYo","_9vRwdG7IvU","ezYuc1jnP9I"];
+    const trackNames = ["Wi-Range - Lyric Story","Wi-Range - Intro","Wi-Range - Skeleton Knight","Wi-Range - Future","Wi-Range - Miami beach","Wi-Range - Night Ranger","Wi-Range & DENIS-G - Night City of Miami","Wi-Range & DENIS-G - NIGHT ROAD (ORIGINAL MIX)","Wi_Range feat Denis-g - back to 80's","Wi_Range - Revenge","Wi_range - Iron age","Wi-Range - Lost In Time"];
+
+    let player = null;
+    let isPlaying = false;
+    let currentTrack = -1;
+    let currentTime = 0;
+    let isPlayerReady = false;
+
+    // Функції збереження/відновлення стану (тільки трек і позиція, БЕЗ автоплею)
+    function saveState() {
+        if (currentTrack !== -1 && isPlayerReady) {
+            localStorage.setItem('radio_track', currentTrack);
+            localStorage.setItem('radio_time', currentTime);
+            // Не зберігаємо стан isPlaying, щоб не грало автоматично
+        }
+    }
+
+    function loadSavedState() {
+        const savedTrack = localStorage.getItem('radio_track');
+        const savedTime = parseFloat(localStorage.getItem('radio_time'));
+        if (savedTrack !== null && savedTrack >= 0 && isPlayerReady) {
+            currentTrack = parseInt(savedTrack);
+            currentTime = isNaN(savedTime) ? 0 : savedTime;
+            // НЕ відновлюємо isPlaying — залишаємо false
+            isPlaying = false;
+            document.getElementById("trackName").innerText = "📻 " + trackNames[currentTrack];
+            // Завантажуємо трек на 0 секунді, потім перемотуємо
+            player.loadVideoById({ videoId: videoIDs[currentTrack], startSeconds: 0 });
+            let interval = setInterval(() => {
+                const dur = player.getDuration();
+                if (dur && dur > 0 && currentTime < dur) {
+                    clearInterval(interval);
+                    player.seekTo(currentTime, true);
+                    // Не запускаємо відтворення, тільки встановлюємо позицію
+                    player.pauseVideo();
+                }
+            }, 100);
+        } else {
+            currentTrack = -1;
+        }
+    }
+
+    function onPlayerReady() {
+        isPlayerReady = true;
+        loadSavedState(); // Завантажуємо збережений стан, але не граємо
+        // Оновлюємо час кожні 2 секунди
+        setInterval(() => {
+            if (player && player.getCurrentTime && isPlayerReady && currentTrack !== -1) {
+                const t = player.getCurrentTime();
+                if (t && !isNaN(t)) {
+                    currentTime = t;
+                    saveState();
+                }
+            }
+        }, 2000);
+    }
+
+    function onPlayerStateChange(event) {
+        const btn = document.getElementById("musicBtn");
+        if (event.data === YT.PlayerState.PLAYING) {
+            isPlaying = true;
+            if (btn) { btn.innerText = "⏸ Пауза"; btn.style.borderColor = "#ff6400"; }
+            saveState();
+        } else if (event.data === YT.PlayerState.PAUSED) {
+            isPlaying = false;
+            if (btn) { btn.innerText = "🎵 Увімкнути радіо"; btn.style.borderColor = "#444"; }
+            saveState();
+        } else if (event.data === YT.PlayerState.ENDED && currentTrack !== -1) {
+            // Трек закінчився – наступний випадковий з початку
+            let newTrack = currentTrack;
+            while (newTrack === currentTrack && videoIDs.length > 1) {
+                newTrack = Math.floor(Math.random() * videoIDs.length);
+            }
+            currentTrack = newTrack;
+            currentTime = 0;
+            document.getElementById("trackName").innerText = "📻 " + trackNames[currentTrack];
+            player.loadVideoById({ videoId: videoIDs[currentTrack], startSeconds: 0 });
+            if (isPlaying) player.playVideo(); // якщо радіо грало, продовжуємо
+            saveState();
+        }
+    }
+
+    function toggleMusic() {
+        if (!player || !isPlayerReady) {
+            console.warn("Player not ready");
+            return;
+        }
+        if (!isPlaying) {
+            if (currentTrack === -1) {
+                // Перший запуск – випадковий трек з випадкової позиції
+                currentTrack = Math.floor(Math.random() * videoIDs.length);
+                currentTime = 0;
+                document.getElementById("trackName").innerText = "📻 " + trackNames[currentTrack];
+                player.loadVideoById({ videoId: videoIDs[currentTrack], startSeconds: 0 });
+                let interval = setInterval(() => {
+                    const dur = player.getDuration();
+                    if (dur && dur > 0) {
+                        clearInterval(interval);
+                        const randomSeek = Math.random() * (dur * 0.7);
+                        player.seekTo(randomSeek, true);
+                        player.playVideo();
+                    }
+                }, 100);
+                isPlaying = true;
+            } else {
+                // Продовжити поточний трек
+                player.playVideo();
+            }
+        } else {
+            player.pauseVideo();
+        }
+    }
+
+    function changeVolume(val) {
+        if (player && player.setVolume) player.setVolume(val);
+    }
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtubePlayer', {
+            height: '0', width: '0',
+            videoId: videoIDs[0],
+            playerVars: { autoplay: 0, controls: 0, disablekb: 1, modestbranding: 1 },
+            events: {
+                onReady: onPlayerReady,
+                onStateChange: onPlayerStateChange
+            }
+        });
+    }
+
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+</script>
+</body>
+</html>
