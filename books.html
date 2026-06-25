@@ -15,6 +15,32 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": "https://wineko-official.github.io/#website",
+      "url": "https://wineko-official.github.io/",
+      "name": "Wineko | Lost in Time",
+      "description": "Офіційний сайт автора Wineko та фентезі-всесвіту Lost in Time.",
+      "publisher": {
+        "@id": "https://wineko-official.github.io/#person"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://wineko-official.github.io/books.html#webpage",
+      "url": "https://wineko-official.github.io/books.html",
+      "name": "Книги та проєкти всесвіту Lost in Time",
+      "description": "Літературні проєкти Wineko: книга Lost in Time, плани, арти, історія створення.",
+      "isPartOf": {
+        "@id": "https://wineko-official.github.io/#website"
+      },
+      "about": {
+        "@id": "https://wineko-official.github.io/#person"
+      },
+      "mainEntity": {
+        "@id": "https://wineko-official.github.io/#book"
+      }
+    },
+    {
       "@type": "Person",
       "@id": "https://wineko-official.github.io/#person",
       "name": "Wineko",
@@ -59,10 +85,14 @@
       "nationality": {
         "@type": "Country",
         "name": "Україна"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://wineko-official.github.io/books.html#webpage"
       }
     },
     {
       "@type": "Book",
+      "@id": "https://wineko-official.github.io/#book",
       "name": "Lost in Time: Путівник по Етернхольту",
       "description": "Ласкаво просимо до світу Етернхольту. Цей путівник написаний мандрівниками, які бачили чи чули ці події наживо. Тут ти дізнаєшся про дивовижних створінь, людей з власною історією та визначні місця, такі як великий Форт Тенсей і легендарне містечко Коханаші. Наші мандрівники збирали ці матеріали по всьому Етернхольту. Вони змогли навіть знайти інформацію про одного з головних членів культу Ордену Темного Ока. Будь уважним: деякі сторінки було втрачено, адже Етернхольт — не зовсім безпечне місце.",
       "url": "https://wineko-official.github.io/books.html",
@@ -81,6 +111,7 @@
       "genre": ["Лорбук", "Фентезі", "Авторський світ", "Етернхольт"],
       "keywords": "фентезі, лор, бестіарій, Етернхольт, авторський світ, путівник",
       "datePublished": "2023-01-01",
+      "dateModified": "2025-01-15",
       "bookFormat": "https://schema.org/EBook",
       "sameAs": [
         "https://www.wattpad.com/story/412806587-lost-in-time-%D0%BF%D1%83%D1%82%D1%96%D0%B2%D0%BD%D0%B8%D0%BA-%D0%BF%D0%BE-%D0%B5%D1%82%D0%B5%D1%80%D0%BD%D1%85%D0%BE%D0%BB%D1%8C%D1%82%D1%83",
